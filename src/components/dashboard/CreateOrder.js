@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DashboardLayout from './DashboardLayout';
 import OrderSheet from './OrderSheet';
@@ -63,74 +63,23 @@ function CreateOrder() {
   const [customersLoading, setCustomersLoading] = useState(true);
   const [serviceOptions, setServiceOptions] = useState([]);
   const [servicesLoading, setServicesLoading] = useState(true);
+  const [staffDirectory, setStaffDirectory] = useState(null);
   const [staffOptions, setStaffOptions] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const assignedToTouched = useRef(false);
+  const receivedByTouched = useRef(false);
+
+  const currentUserId = user?.id;
+  const currentUserName = user?.name;
+  const currentUserFirstName = user?.firstName;
+  const currentUserLastName = user?.lastName;
+  const currentUserUsername = user?.username;
+  const currentUserRawRole = user?.rawRole;
+  const currentUserRole = user?.role;
 
   useEffect(() => {
     let active = true;
-
-    const toStaffOption = (person, role) => ({
-      value: String(person.id),
-      label:
-        `${person.first_name || ''} ${person.last_name || ''}`.trim() ||
-        person.username ||
-        `${role} #${person.id}`,
-      role,
-    });
-
-    const currentId = user?.id != null ? String(user.id) : null;
-    const selfRole = (() => {
-      const raw = (user?.rawRole || user?.role || '').toString().toLowerCase();
-      if (raw.includes('super')) return 'Super Admin';
-      if (raw.includes('employee')) return 'Employee';
-      return 'Admin';
-    })();
-    const selfOption = currentId
-      ? {
-          value: currentId,
-          label:
-            user.name ||
-            `${user.firstName || ''} ${user.lastName || ''}`.trim() ||
-            user.username ||
-            `#${currentId}`,
-          role: selfRole,
-        }
-      : null;
-
-    Promise.all([
-      listSuperadminsRequest({ pageSize: 100 }).catch(() => null),
-      listAdminsRequest({ pageSize: 100 }).catch(() => null),
-      listEmployeesRequest({ pageSize: 100 }).catch(() => null),
-    ]).then(([superadmins, admins, employees]) => {
-      if (!active) return;
-      const superadminList = Array.isArray(superadmins?.results)
-        ? superadmins.results
-        : [];
-      const adminList = Array.isArray(admins?.results) ? admins.results : [];
-      const employeeList = Array.isArray(employees?.results)
-        ? employees.results
-        : [];
-      let options = [
-        ...superadminList.map((s) => toStaffOption(s, 'Super Admin')),
-        ...adminList.map((a) => toStaffOption(a, 'Admin')),
-        ...employeeList.map((e) => toStaffOption(e, 'Employee')),
-      ];
-
-      if (selfOption) {
-        const fromList = options.find((o) => o.value === currentId);
-        options = options.filter((o) => o.value !== currentId);
-        options.unshift({
-          ...(fromList || selfOption),
-          label: `${(fromList || selfOption).label} (You)`,
-          isSelf: true,
-        });
-        setAssignedTo(currentId);
-        setReceivedBy(currentId);
-      }
-
-      setStaffOptions(options);
-    });
 
     setCustomersLoading(true);
     fetchAllPages(
@@ -200,7 +149,91 @@ function CreateOrder() {
     return () => {
       active = false;
     };
-  }, [user?.id]);
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+
+    const toStaffOption = (person, role) => ({
+      value: String(person.id),
+      label:
+        `${person.first_name || ''} ${person.last_name || ''}`.trim() ||
+        person.username ||
+        `${role} #${person.id}`,
+      role,
+    });
+
+    Promise.all([
+      listSuperadminsRequest({ pageSize: 100 }).catch(() => null),
+      listAdminsRequest({ pageSize: 100 }).catch(() => null),
+      listEmployeesRequest({ pageSize: 100 }).catch(() => null),
+    ]).then(([superadmins, admins, employees]) => {
+      if (!active) return;
+      const superadminList = Array.isArray(superadmins?.results)
+        ? superadmins.results
+        : [];
+      const adminList = Array.isArray(admins?.results) ? admins.results : [];
+      const employeeList = Array.isArray(employees?.results)
+        ? employees.results
+        : [];
+      setStaffDirectory([
+        ...superadminList.map((s) => toStaffOption(s, 'Super Admin')),
+        ...adminList.map((a) => toStaffOption(a, 'Admin')),
+        ...employeeList.map((e) => toStaffOption(e, 'Employee')),
+      ]);
+    });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (staffDirectory == null) return;
+
+    const currentId = currentUserId != null ? String(currentUserId) : null;
+    let options = staffDirectory;
+
+    if (currentId) {
+      const raw = (currentUserRawRole || currentUserRole || '')
+        .toString()
+        .toLowerCase();
+      let selfRole = 'Admin';
+      if (raw.includes('super')) selfRole = 'Super Admin';
+      else if (raw.includes('employee')) selfRole = 'Employee';
+
+      const selfOption = {
+        value: currentId,
+        label:
+          currentUserName ||
+          `${currentUserFirstName || ''} ${currentUserLastName || ''}`.trim() ||
+          currentUserUsername ||
+          `#${currentId}`,
+        role: selfRole,
+      };
+      const fromList = staffDirectory.find((o) => o.value === currentId);
+      options = staffDirectory.filter((o) => o.value !== currentId);
+      options.unshift({
+        ...(fromList || selfOption),
+        label: `${(fromList || selfOption).label} (You)`,
+        isSelf: true,
+      });
+
+      if (!assignedToTouched.current) setAssignedTo(currentId);
+      if (!receivedByTouched.current) setReceivedBy(currentId);
+    }
+
+    setStaffOptions(options);
+  }, [
+    staffDirectory,
+    currentUserId,
+    currentUserName,
+    currentUserFirstName,
+    currentUserLastName,
+    currentUserUsername,
+    currentUserRawRole,
+    currentUserRole,
+  ]);
 
   // Ensure inventory has slots for catalog add-ons once they load.
   useEffect(() => {
@@ -336,7 +369,10 @@ function CreateOrder() {
               <span>Assign To</span>
               <select
                 value={assignedTo}
-                onChange={(e) => setAssignedTo(e.target.value)}
+                onChange={(e) => {
+                  assignedToTouched.current = true;
+                  setAssignedTo(e.target.value);
+                }}
               >
                 <option value="">Unassigned</option>
                 {staffOptions.map((member) => (
@@ -392,7 +428,10 @@ function CreateOrder() {
           receivedBySelect={
             <select
               value={receivedBy}
-              onChange={(e) => setReceivedBy(e.target.value)}
+              onChange={(e) => {
+                receivedByTouched.current = true;
+                setReceivedBy(e.target.value);
+              }}
             >
               <option value="">Select staff</option>
               {staffOptions.map((member) => (

@@ -38,7 +38,7 @@ const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 
 function formatDateLabel(dateString) {
   if (!dateString) return '';
-  const [year, month, day] = dateString.split('-').map(Number);
+  const [, month, day] = dateString.split('-').map(Number);
   if (!month || !day) return dateString;
   return `${MONTHS[month - 1]} ${day}`;
 }
