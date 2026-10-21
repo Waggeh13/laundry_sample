@@ -1,0 +1,32 @@
+.payment-modal {
+  max-width: 460px;
+}
+
+.payment-balance-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  background: #f4f6f9;
+  border: 1px solid #eef0f4;
+  border-radius: 10px;
+}
+
+.payment-balance-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.payment-balance-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #191489;
+}
+
+.payment-hint {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #6b7280;
+}

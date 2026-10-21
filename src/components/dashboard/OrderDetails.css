@@ -1,0 +1,80 @@
+.order-not-found {
+  margin: 0;
+  font-size: 14px;
+  color: #8b95a5;
+}
+
+.order-details-status-pills {
+  align-items: center;
+}
+
+.order-details-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  background: #f3f4f8;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+}
+
+.order-details-pill-ok {
+  color: #1a8a62;
+  background: #d4f0e8;
+  border-color: #b6e3d3;
+}
+
+.order-details-pill.payment-status-pending {
+  background: #fef3cd;
+  color: #b8860b;
+  border-color: #f5e6a8;
+}
+
+.order-details-pill.payment-status-partially_paid {
+  background: #e0e7ff;
+  color: #3730a3;
+  border-color: #c7d2fe;
+}
+
+.order-details-pill.payment-status-paid {
+  background: #d4f0e8;
+  color: #1a8a62;
+  border-color: #b6e3d3;
+}
+
+.order-sheet-readonly .order-sheet-line-field input,
+.order-sheet-readonly .order-sheet-table td {
+  color: #0f172a;
+}
+
+.order-sheet-readonly .order-sheet-check {
+  cursor: default;
+}
+
+.order-sheet-readonly .order-sheet-check input:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .order-details-status-pills {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .order-sheet-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .order-details-status-pills {
+    flex-wrap: wrap;
+  }
+
+  .order-details-pill {
+    font-size: 12px;
+  }
+}

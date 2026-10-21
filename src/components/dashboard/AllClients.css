@@ -1,0 +1,24 @@
+.client-email,
+.client-phone {
+  color: #8b95a5;
+}
+
+.client-status-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.client-phone-warn {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+}
+
+.client-phone-warn-text {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #92400e;
+}

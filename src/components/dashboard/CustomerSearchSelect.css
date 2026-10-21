@@ -1,0 +1,112 @@
+.customer-search-select {
+  position: relative;
+  width: 100%;
+}
+
+.customer-search-select-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.customer-search-select-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1.5px solid #334155;
+  border-radius: 0;
+  padding: 8px 28px 8px 2px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #0f172a;
+  background: transparent;
+  outline: none;
+}
+
+.customer-search-select-input:focus {
+  border-bottom-color: #1f5f9e;
+}
+
+.customer-search-select-input:disabled {
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.customer-search-select-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.customer-search-select-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+.customer-search-select-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.customer-search-select-list {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+  max-height: 240px;
+  overflow: auto;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);
+}
+
+.customer-search-select-empty {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.customer-search-select-option {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 9px 12px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.customer-search-select-option:hover,
+.customer-search-select-option.is-active {
+  background: #f1f5f9;
+}
+
+.customer-search-select-option-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.customer-search-select-option-meta {
+  font-size: 12px;
+  color: #64748b;
+}

@@ -1,0 +1,15 @@
+.customer-profile-page {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.customer-profile-page .profile-info-value {
+  word-break: break-word;
+}
+
+.customer-profile-loading {
+  margin: 0;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #8b95a5;
+}

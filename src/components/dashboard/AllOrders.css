@@ -1,0 +1,100 @@
+.order-number {
+  font-weight: 500;
+  color: #8b95a5;
+}
+
+.services-filters-active {
+  margin-top: 10px;
+}
+
+.services-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1d4ed8;
+  background: #dbeafe;
+  border-radius: 999px;
+}
+
+.services-filter-chip-clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(29, 78, 216, 0.15);
+  color: inherit;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.services-filter-chip-clear:hover {
+  background: rgba(29, 78, 216, 0.28);
+}
+
+.order-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.order-cash-btn {
+  background: #f3f4f8;
+  color: #191489;
+}
+
+.order-complete-btn {
+  background: #d4f0e8;
+  color: #1a8a62;
+}
+
+.order-pending,
+.order-status-pending {
+  background: #fef3cd;
+  color: #b8860b;
+}
+
+.order-status-processing,
+.order-status-in_progress {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.order-status-ready {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.order-completed,
+.order-status-completed {
+  background: #d4f0e8;
+  color: #1a8a62;
+}
+
+.order-status-cancelled {
+  background: #fde8e8;
+  color: #b42318;
+}
+
+.payment-status-pending {
+  background: #fef3cd;
+  color: #b8860b;
+}
+
+.payment-status-partially_paid {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.payment-status-paid {
+  background: #d4f0e8;
+  color: #1a8a62;
+}

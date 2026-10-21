@@ -1,0 +1,233 @@
+.mass-notification-subtitle {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.mass-notification-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.mass-notification-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px 24px;
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  border-radius: 12px;
+}
+
+.mass-notification-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.mass-notification-textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1.5;
+  color: #111827;
+  background: #ffffff;
+  border: 1px solid #e0e4ea;
+  border-radius: 8px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.mass-notification-textarea:focus {
+  outline: none;
+  border-color: #191489;
+  box-shadow: 0 0 0 3px rgba(25, 20, 137, 0.12);
+}
+
+.mass-notification-textarea:disabled {
+  background: #f8fafc;
+  color: #6b7280;
+}
+
+.mass-notification-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: #8b95a5;
+}
+
+.mass-notification-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+}
+
+.mass-notification-check input {
+  width: 16px;
+  height: 16px;
+}
+
+.mass-notification-preview-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border: 1px solid #eef0f3;
+  border-radius: 8px;
+}
+
+.mass-notification-preview {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #111827;
+  white-space: pre-wrap;
+}
+
+.mass-notification-preview-note {
+  font-size: 12px;
+  color: #8b95a5;
+}
+
+.mass-notification-error {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #b42318;
+  background: #fde8e8;
+  border-radius: 8px;
+}
+
+.mass-notification-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.mass-notification-clients-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mass-notification-clients-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.mass-notification-client-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.mass-notification-hint {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.mass-notification-client-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 420px;
+  overflow: auto;
+  border: 1px solid #eef0f3;
+  border-radius: 8px;
+}
+
+.mass-notification-client-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+}
+
+.mass-notification-client-row:last-child {
+  border-bottom: none;
+}
+
+.mass-notification-client-row:hover {
+  background: #f8fafc;
+}
+
+.mass-notification-client-row.is-disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.mass-notification-client-row input {
+  margin-top: 3px;
+}
+
+.mass-notification-client-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.mass-notification-client-main strong {
+  font-size: 13px;
+  color: #111827;
+}
+
+.mass-notification-client-main span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.mass-notification-result {
+  margin-top: 0;
+}
+
+.mass-notification-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.mass-notification-skips {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+@media (max-width: 960px) {
+  .mass-notification-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .mass-notification-clients-header,
+  .mass-notification-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mass-notification-actions .add-service-btn,
+  .mass-notification-actions .services-reset-btn,
+  .mass-notification-client-actions .services-reset-btn {
+    width: 100%;
+  }
+}

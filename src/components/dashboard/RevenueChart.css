@@ -1,0 +1,35 @@
+.revenue-chart {
+  width: 100%;
+}
+
+.revenue-chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chart-gridline {
+  stroke: #eef0f3;
+  stroke-width: 1;
+}
+
+.chart-axis-label {
+  fill: #8b95a5;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.chart-bar {
+  transition: opacity 0.2s;
+}
+
+.chart-bar:hover {
+  opacity: 0.82;
+}
+
+.chart-empty {
+  padding: 40px 0;
+  text-align: center;
+  color: #8b95a5;
+  font-size: 14px;
+}

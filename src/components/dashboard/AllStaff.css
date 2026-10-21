@@ -1,0 +1,89 @@
+.staff-email {
+  color: #8b95a5;
+}
+
+.staff-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.staff-action-btn {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  color: #4b5563;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.staff-action-btn:hover {
+  border-color: #191489;
+  color: #191489;
+}
+
+.staff-toast {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a8a62;
+  background: #ffffff;
+  border: 1px solid #c7ecd9;
+  border-left: 4px solid #1a8a62;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  animation: staff-toast-in 0.2s ease-out;
+}
+
+.staff-toast-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #1a8a62;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+@keyframes staff-toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.staff-role-badge {
+  display: inline-block;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.staff-role-admin {
+  background: #e4ecff;
+  color: #2a23b8;
+}
+
+.staff-role-employee {
+  background: #f3e3fb;
+  color: #8b3ddb;
+}

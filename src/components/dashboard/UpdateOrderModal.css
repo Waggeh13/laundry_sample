@@ -1,0 +1,69 @@
+@import './ServiceModal.css';
+
+.update-order-modal {
+  width: 100%;
+  max-width: 920px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.update-order-sheet-modal {
+  max-width: 980px;
+}
+
+.update-order-modal-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #191489;
+  margin-bottom: 6px;
+}
+
+.update-order-modal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.update-order-sheet-toolbar {
+  margin: 0;
+}
+
+.update-order-sms-hint {
+  margin: 10px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #6b7280;
+}
+
+.update-order-sheet-toolbar .order-sheet-toolbar-fields {
+  width: 100%;
+}
+
+.update-order-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .update-order-modal-body {
+    padding: 16px;
+  }
+
+  .update-order-modal-footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .update-order-modal-footer .order-sheet-cancel-btn,
+  .update-order-modal-footer .order-sheet-submit-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
