@@ -61,7 +61,12 @@
 
 .login-form-header {
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 360px;
   padding-left: 24px;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -70,14 +75,18 @@
   display: block;
 }
 
+.login-form-header .logo {
+  margin-bottom: -24px;
+}
+
 .login-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   max-width: 360px;
-  padding-top: 24px;
+  padding-top: 1px;
   padding-left: 24px;
 }
 
@@ -87,6 +96,7 @@
   color: var(--text-primary);
   margin-bottom: 16px;
   line-height: 1.2;
+  text-align: center;
 }
 
 .login-description {
@@ -94,6 +104,7 @@
   line-height: 1.65;
   color: var(--text-secondary);
   margin-bottom: 36px;
+  text-align: center;
 }
 
 .login-form {
@@ -237,13 +248,17 @@
     overflow-y: auto;
   }
 
+  .login-form-header {
+    max-width: 100%;
+  }
+
   .logo {
-    width: 180px;
+    width: 200px;
   }
 
   .login-content {
     max-width: 100%;
-    padding-top: 12px;
+    padding-top: 8px;
     justify-content: flex-start;
   }
 
