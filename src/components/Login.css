@@ -76,7 +76,7 @@
 }
 
 .login-form-header .logo {
-  margin-bottom: -24px;
+  margin-bottom: -32px;
 }
 
 .login-content {
@@ -86,7 +86,7 @@
   justify-content: flex-start;
   width: 100%;
   max-width: 360px;
-  padding-top: 1px;
+  padding-top: 8px;
   padding-left: 24px;
 }
 

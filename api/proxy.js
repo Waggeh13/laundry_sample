@@ -1,5 +1,7 @@
 const BACKEND =
-  process.env.BACKEND_URL || 'https://laundromat-moolre-d87p.onrender.com';
+  process.env.API_URL ||
+  process.env.BACKEND_URL ||
+  'https://laundromat-moolre-d87p.onrender.com';
 
 const HOP_BY_HOP = new Set([
   'connection',

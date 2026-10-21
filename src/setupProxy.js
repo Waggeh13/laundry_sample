@@ -1,7 +1,7 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const target =
-  process.env.REACT_APP_API_URL || 'https://laundromat-moolre-d87p.onrender.com';
+  process.env.API_URL || 'https://laundromat-moolre-d87p.onrender.com';
 
 const proxyOptions = {
   target,
